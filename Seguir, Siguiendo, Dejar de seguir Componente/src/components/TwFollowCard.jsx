@@ -1,8 +1,8 @@
 import { useState } from "react";
 import "./TwFollowCard.css";
 
-export default function TwFollowCard({ nombreUsiario, nombre }) {
-    const [loSigue, setLoSigue] = useState(false);
+export default function TwFollowCard({ nombreUsiario, nombre, initialLoSigue }) {
+    const [loSigue, setLoSigue] = useState(initialLoSigue);
     const [hover, setHover] = useState(false);
     const [initialHover, setInitialHover] = useState(false);
 
