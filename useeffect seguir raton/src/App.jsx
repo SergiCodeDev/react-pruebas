@@ -3,6 +3,7 @@ const SeguirRaton = () => {
   const [activado, setActivado] = useState(false)
   const [posicion, setPosicion] = useState({ x: 0, y: 0 })
 
+  // movimientoRaton
   useEffect(() => {
     console.log("Efecto", { activado })
 
@@ -19,10 +20,24 @@ const SeguirRaton = () => {
     // se ejecuta cuando cambia "activado" (cuando vuelve a renderizar o actualizar...)
     // cuando el componente se desmonta
     // cuando las dependecias cambian, antes de ejecutar el efecto nuevo
-    return () => {
+    return () => { // metodo de limpieza
       window.removeEventListener("pointermove", movimientoRaton)
     }
   }, [activado])
+
+  // cambiar clase del body
+  useEffect(()=> {
+    document.body.classList.toggle("no-cursor", activado)
+
+    return () => {
+      document.body.classList.remove("no-cursor")
+    }
+
+  }, [activado])
+
+  // [] -> solo se ejecuta una vez cuando se monta el componente
+  // [enabled] o [activado, otro, ejemplo] -> se ejecuta cuando cambia enabled y cuando se monta el componente
+  // undefined -> se ejecuta cada vez que se renderiza el componente
 
   return (
     <>
