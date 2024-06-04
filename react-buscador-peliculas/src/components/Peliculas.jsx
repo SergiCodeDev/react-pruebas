@@ -1,13 +1,13 @@
 
 function ListaDePeliculas({ peliculas }) {
     return (
-        <ul>
+        <ul className="peliculas">
         {
           peliculas.map(pelicula => (
-            <li key={pelicula.imdbID}>
-              <h3>{pelicula.Title}</h3>
-              <p>{pelicula.Year}</p>
-              <img src={pelicula.Poster}
+            <li className="pelicula" key={pelicula.id}>
+              <h3>{pelicula.title}</h3>
+              <p>{pelicula.year}</p>
+              <img src={pelicula.poster}
                 alt={`Foto de la portada de ${pelicula.Title}`}
               />
             </li>
@@ -22,7 +22,6 @@ function NoHayListaDePeliculas() {
 }
 
 export function Peliculas({peliculas}) {
-    const peliculas = resultadoOk.Search
     const hayPelicula = peliculas?.length > 0
 
     return (
