@@ -1,15 +1,13 @@
-import resultadoOk from "../mocks/resultados.json"
-import resultadoMalo from "../mocks/no-resultados.json"
+import { useState } from "react"
+import { buscarPeliculas } from "../services/peliculas.js"
 
-export function usePeliculas(){
-    const peliculas = resultadoOk.Search
-  
-    const mapearPeliculas = peliculas?.map(pelicula => ({
-      id: pelicula.imdbID,
-      title: pelicula.Title,
-      year: pelicula.Year,
-      poster: pelicula.Poster
-    }))
-  
-    return {peliculas: mapearPeliculas}
+export function usePeliculas({ buscador }) {
+  const [peliculas, setPeliculas] = useState([])
+
+  const getPeliculas = async () => {
+    const newPeliculas = await buscarPeliculas({buscador})
+    setPeliculas(newPeliculas)
   }
+
+  return { peliculas , getPeliculas }
+}

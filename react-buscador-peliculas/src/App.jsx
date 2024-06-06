@@ -4,11 +4,6 @@ import { Peliculas } from './components/Peliculas.jsx'
 import { useEffect, useRef } from 'react'
 import { useState } from 'react'
 
-const API_KEY = "4287ad07"
-
-
-// https://www.omdbapi.com/?apikey=4287ad07&s=Avengers
-
 function useBuscador() {
   const [buscador, setBuscador] = useState("")
   const [error, setError] = useState(null)
@@ -42,13 +37,13 @@ function useBuscador() {
 }
 
 function App() {
-  const { peliculas } = usePeliculas()
   const { buscador, setBuscador, error } = useBuscador()
+  const { peliculas , getPeliculas } = usePeliculas({buscador})
 
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log({ buscador })
+    getPeliculas()
   }
 
   const handleChange = (e) => {
