@@ -1,4 +1,7 @@
-const API_KEY = "4287ad07"
+// API a usar: - https://www.omdbapi.com/
+// Consigue la API Key en la propia página web registrando tu email.
+
+const API_KEY = "tu_codigo"
 
 export const buscarPeliculas = async ({ buscador }) => {
     if (buscador === "") return null

@@ -5,6 +5,8 @@ Crea una aplicación para buscar películas
 API a usar: - https://www.omdbapi.com/
 Consigue la API Key en la propia página web registrando tu email.
 
+Cambiar en services/peliculas.js const API_KEY = "tu_codigo"
+
 Requerimientos:
 
 ✅ Necesita mostrar un input para buscar la película y un botón para buscar.

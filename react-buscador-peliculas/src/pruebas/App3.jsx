@@ -1,10 +1,8 @@
 import './App.css'
 import { usePeliculas } from './hooks/usePeliculas.js'
 import { Peliculas } from './components/Peliculas.jsx'
-import { useCallback, useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { useState } from 'react'
-// npm install just-debounce-it -E
-import debounce from 'just-debounce-it'
 
 function useBuscador() {
   const [buscador, setBuscador] = useState("")
@@ -43,9 +41,6 @@ function App() {
   const { buscador, setBuscador, error } = useBuscador()
   const { peliculas, getPeliculas, cargando } = usePeliculas({ buscador, ordenar })
 
-  const debounceGetPeliculas = useCallback(debounce(buscador => {
-    getPeliculas({buscador})
-  }, 300), [getPeliculas])
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -57,9 +52,7 @@ function App() {
   }
 
   const handleChange = (e) => {
-    const nuevoBuscador = e.target.value
-    setBuscador(nuevoBuscador)
-    debounceGetPeliculas(nuevoBuscador)
+    setBuscador(e.target.value)
   }
 
 

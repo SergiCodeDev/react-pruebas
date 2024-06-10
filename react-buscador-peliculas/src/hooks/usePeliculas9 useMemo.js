@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useRef, useState } from "react"
+import { useMemo, useRef, useState } from "react"
 import { buscarPeliculas } from "../services/peliculas.js"
 
 export function usePeliculas({ buscador, ordenar }) {
@@ -7,9 +7,8 @@ export function usePeliculas({ buscador, ordenar }) {
   const [error, setError] = useState(null)
   const busquedaAnterior = useRef(buscador)
 
-  // useCallback para devolver una funcion,
-  // por debajo usa useMemo
-  const getPeliculas = useCallback(async ({ buscador }) => {
+  const getPeliculas = useMemo(()=> {
+    return async ({ buscador }) => {
       if (buscador === busquedaAnterior.current) return
       try {
         setCargando(true)
@@ -23,7 +22,8 @@ export function usePeliculas({ buscador, ordenar }) {
         setCargando(false)
       }
   
-    }, []) 
+    }
+  }, []) 
 
   // useMemo guardar un valor o recalcularlo
   const ordenarPeliculas = useMemo(() => {
