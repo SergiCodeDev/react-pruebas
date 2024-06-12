@@ -1,14 +1,16 @@
 import { useState, useId } from "react"
 import "./Filtros.css"
-import { useFiltros } from "../hooks/useFiltros.js"
 
-export function Filtros () {
-    const {filtros, setFiltros} = useFiltros()
+export function Filtros ({onChange}) {
+    const [precioMinimo, setPrecioMinimo] = useState(0)
     const filtroPrecioMinimoId = useId()
     const filtroCategoriaId = useId()
 
     const handleCambioPrecioMinimo = (e) => {
-        setFiltros(estadoPrevio => ({
+        // aqui algo esta mal
+        // dos fuentes de la verdad
+        setPrecioMinimo(e.target.value)
+        onChange(estadoPrevio => ({
             ...estadoPrevio,
             minPrice: e.target.value
         }))
@@ -17,7 +19,7 @@ export function Filtros () {
     const hamdleCambioCategoria = (e) => {
         // esta mal
         //pasando fn al estado nativo de react a un componente hijo
-        setFiltros(estadoPrevio => ({
+        onChange(estadoPrevio => ({
             ...estadoPrevio,
             category: e.target.value
         }))
@@ -31,10 +33,10 @@ export function Filtros () {
                 id={filtroPrecioMinimoId}
                 min="0"
                 max="1000"
-                value={filtros.minPrice}
+                value={precioMinimo}
                 onChange={handleCambioPrecioMinimo}
                  />
-                 <span>{filtros.minPrice} €</span>
+                 <span>{precioMinimo} €</span>
             </div>
             <div>
                 <label htmlFor={filtroCategoriaId}>Category</label>
