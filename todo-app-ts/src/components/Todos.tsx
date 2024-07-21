@@ -12,17 +12,19 @@
 
 type ListOfTodos = Todos[] */
 
-import { type ListOfTodos } from "../types"
+import { type Todo as TodoType, type TodoId, type ListOfTodos } from "../types"
 import { Todo } from "./Todo"
 
 interface Props {
     todos: ListOfTodos
+    onToggleCompleteTodo: ({ id, completado }: Pick<TodoType, "id" | "completado">) => void
+    onRemoveTodo: ({id}: TodoId) => void
 }
 
 //export const Todos = ({ todos }: { todos: Array<{ id: string, titulo: string, completado: boolean }>
 //export const Todos = ({ todos }: { todos: { id: string, titulo: string, completado: boolean }[] })
 
-export const Todos: React.FC<Props> = ({ todos }) => {
+export const Todos: React.FC<Props> = ({ todos, onRemoveTodo, onToggleCompleteTodo }) => {
     return (
         <ul className="w-4/5">
             {
@@ -35,6 +37,8 @@ export const Todos: React.FC<Props> = ({ todos }) => {
                             id={todo.id}
                             titulo={todo.titulo}
                             completado={todo.completado}
+                            onRemoveTodo={onRemoveTodo}
+                            onToggleCompleteTodo={onToggleCompleteTodo}
                         />
                     </li>
                 ))

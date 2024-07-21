@@ -1,22 +1,35 @@
-import { type Todo as TodoType } from "../types"
+import { TodoId, type Todo as TodoType } from "../types"
 
-type Props = TodoType
+// type Props = TodoType
 
-export const Todo: React.FC<Props> = ({ id, titulo, completado }) => {
+interface Props extends TodoType {
+    // onRemoveTodo: (id: string) => void
+    onRemoveTodo: ({id}: TodoId) => void
+    onToggleCompleteTodo: ({ id, completado }: Pick<TodoType, "id" | "completado">) => void
+}
+
+export const Todo: React.FC<Props> = ({ id, titulo, completado, onRemoveTodo, onToggleCompleteTodo }) => {
+    const handleChangeCheckbox = (e: React.ChangeEvent<HTMLInputElement>) => {
+        onToggleCompleteTodo({
+            id, completado: e.target.checked
+        })
+        
+    }
+
     return (
         <div className="flex flex-row flex-nowrap justify-between">
             <div className="flex flex-row flex-nowrap items-center">
                 <input
-                    className="toggle"
+                    className="w-4 h-4 transition-all duration-300 ease-in-out appearance-none shadow-[0_0_6px] shadow-red-400/40 bg-red-400 cursor-pointer rounded-full checked:shadow-green-400/40 checked:bg-green-400"
                     checked={completado}
                     type="checkbox"
-                    onChange={() => { }}
+                    onChange={handleChangeCheckbox}
                 />
-                <label className={`${completado ? "line-through text-neutral-500" : ""} ml-2`}>{titulo}</label>
+                <label className={`${completado ? "line-through text-neutral-500" : ""} ml-3`}>{titulo}</label>
             </div>
 
             <button className="px-1 py-1 bg-neutral-200/70 rounded-md"
-                onClick={() => { }}
+                onClick={() => {onRemoveTodo({id})}}
             >
                 <svg xmlns="http://www.w3.org/2000/svg"
                     className="w-4 h-4"
