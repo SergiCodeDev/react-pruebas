@@ -10,14 +10,17 @@ interface Props {
 export const Filters: React.FC<Props> = ({filterSelected, onFilterChange}) => {
     /* const handleClick = () */
     return(
-        <ul className="">
+        <ul className="flex flex-row gap-x-2">
             {
                 Object.entries(FILTERS_BUTTONS).map(([key, {href, literal}])=>{
                     const isSelected = key == filterSelected
                     const className = isSelected ? "slecionado" :""
                     
                     return(
-                        <li key={key}>
+                        <li
+                        className="py-[0.14rem] px-3 bg-neutral-200/70 rounded-md" 
+                        key={key} 
+                        >
                             <a href={href}
                             className={className}
                             onClick={

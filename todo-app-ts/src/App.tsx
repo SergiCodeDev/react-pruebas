@@ -76,7 +76,7 @@ export default function App() {
   }
 
   return (
-    <div className="flex flex-col items-center mt-20 mb-20 px-12 py-8 bg-neutral-100 w-5/12 mx-auto rounded-2xl shadow-2xl shadow-neutral-100/50">
+    <div className="flex flex-col items-center gap-y-12 mt-20 mb-20 px-12 py-8 bg-neutral-100 w-5/12 mx-auto rounded-2xl shadow-2xl shadow-neutral-100/50 ml-0">
       <Header onAddTodo={handleAddTodo} />
       <Todos
         onToggleCompleteTodo={handleCompleted}

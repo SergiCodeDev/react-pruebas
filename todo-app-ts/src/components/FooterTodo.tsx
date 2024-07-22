@@ -17,15 +17,18 @@ export const FooterTodo: React.FC<Props> = ({
     onClearComplete
 }) => {
     return(
-        <footer className="">
-            <span className="">
-                <strong>{activeCount}</strong> tareas pendientes
-            </span>
+        <footer className="flex flex-col w-full items-center">
+            <div className="flex flex-row flex-nowrap gap-x-4 w-4/5 justify-between items-center">
+                <span className="">
+                    <strong>{activeCount}</strong> tareas pendientes
+                </span>
 
-            <Filters
-                filterSelected={filterSelected}
-                onFilterChange={handleFilterChange}
-            />
+                <Filters
+                    filterSelected={filterSelected}
+                    onFilterChange={handleFilterChange}
+                />
+            </div>
+            
             {
                 completeCount > 0 && (
                     <button
