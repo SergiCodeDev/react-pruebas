@@ -19,8 +19,8 @@ export const FooterTodo: React.FC<Props> = ({
     return(
         <footer className="flex flex-col w-full items-center">
             <div className="flex flex-row flex-nowrap gap-x-4 w-4/5 justify-between items-center">
-                <span className="">
-                    <strong>{activeCount}</strong> tareas pendientes
+                <span className="text-neutral-600">
+                    <strong className="text-neutral-500">{activeCount}</strong> tareas pendientes
                 </span>
 
                 <Filters
@@ -32,7 +32,7 @@ export const FooterTodo: React.FC<Props> = ({
             {
                 completeCount > 0 && (
                     <button
-                    className=""
+                    className="font-semibold text-neutral-500 transition-colors ease-in-out duration-300 hover:text-red-500 mt-5"
                     onClick={onClearComplete}
                     >
                         Borrar completadas

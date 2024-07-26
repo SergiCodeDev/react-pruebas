@@ -25,7 +25,7 @@ export const Todo: React.FC<Props> = ({ id, titulo, completado, onRemoveTodo, on
                     type="checkbox"
                     onChange={handleChangeCheckbox}
                 />
-                <label className={`${completado ? "line-through text-neutral-500" : ""} ml-3`}>{titulo}</label>
+                <label className={`text-neutral-600 ${completado ? "line-through text-neutral-500/80" : ""} ml-3`}>{titulo}</label>
             </div>
 
             <button className="px-1 py-1 bg-neutral-200/70 rounded-md"

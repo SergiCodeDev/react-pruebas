@@ -18,7 +18,7 @@ export const Filters: React.FC<Props> = ({filterSelected, onFilterChange}) => {
                     
                     return(
                         <li
-                        className="py-[0.14rem] px-3 bg-neutral-200/70 rounded-md" 
+                        className="py-[0.14rem] px-3 text-neutral-600 bg-neutral-200/70 transition-colors ease-in-out duration-300 hover:bg-neutral-300/70 rounded-md" 
                         key={key} 
                         >
                             <a href={href}
