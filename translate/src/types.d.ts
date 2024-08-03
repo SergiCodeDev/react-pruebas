@@ -5,8 +5,8 @@ export type AutoLenguaje = typeof AUTO_LENGUAJE
 export type DesdeLenguaje = Lenguaje | AutoLenguaje
 
 export interface State {
-    fromLanguage: string,
-    toLanguage: string,
+    fromLanguage: DesdeLenguaje,
+    toLanguage: Lenguaje,
     fromText: string,
     result: string,
     loading: boolean
@@ -14,7 +14,12 @@ export interface State {
 
 export type Action =
     | { type: "INTERCAMBIAR_LENGUAJES" }
-    | { type: "DESDE_LENGUAJE", payload: string }
-    | { type: "DESTINO_LENGUAJE", payload: string }
+    | { type: "DESDE_LENGUAJE", payload: DesdeLenguaje }
+    | { type: "DESTINO_LENGUAJE", payload: Lenguaje }
     | { type: "DESDE_TEXTO", payload: string }
     | { type: "DESTINO_RESULTADO", payload: string }
+
+export enum SectionType {
+    From = "from",
+    To = "to",
+}
