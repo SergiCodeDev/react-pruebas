@@ -3,9 +3,8 @@ import { Container, Stack, Typography } from '@mui/material'
 import './App.css'
 import { JavaScriptLogo } from './icons/JavaScriptLogo'
 
-function App() {
-
-  return (
+function App() {   
+  return (  
     <main>
       <Container maxWidth="sm">
         <Stack direction="row" gap={2} alignItems="center" justifyContent="center">
