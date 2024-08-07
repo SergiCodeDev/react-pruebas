@@ -4,6 +4,7 @@ import './App.css'
 import { JavaScriptLogo } from './icons/JavaScriptLogo'
 import { Start } from './Start'
 import { useQuestionsStore } from './store/questions'
+import { Game } from './Game'
 
 function App() {
   const questions = useQuestionsStore(state => state.questions)
@@ -17,6 +18,8 @@ function App() {
           </Typography>
         </Stack>
         <Start />
+        {questions.length === 0 && <Start />}
+        {questions.length > 0 && <Game />}
       </Container>
     </main>
   )
