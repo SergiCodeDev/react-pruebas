@@ -2,8 +2,11 @@
 import { Container, Stack, Typography } from '@mui/material'
 import './App.css'
 import { JavaScriptLogo } from './icons/JavaScriptLogo'
+import { Start } from './Start'
+import { useQuestionsStore } from './store/questions'
 
-function App() {   
+function App() {
+  const questions = useQuestionsStore(state => state.questions)
   return (  
     <main>
       <Container maxWidth="sm">
@@ -13,6 +16,7 @@ function App() {
             JavaScript Quizz
           </Typography>
         </Stack>
+        <Start />
       </Container>
     </main>
   )
